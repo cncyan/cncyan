@@ -73,6 +73,8 @@
       justify-content: center;
       align-items: center;
       color: #323232;
+      width: 680px;
+      margin: auto;
     }
     .navs>li{
       padding: 10px 15px;
@@ -80,6 +82,7 @@
       margin:0 5px;
       cursor: pointer;
       font-size: 18px;
+      border-radius: 2px;
     }
     .navs>li:hover{
       background-image: linear-gradient(45deg, #FFFF00, #FF8C00);
@@ -92,6 +95,87 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(to top right, #8BC34A  0%, #FFFF00 35%, #FF8C00 65%);
+      -webkit-background-clip: text;
+      color: transparent;
+      position: relative;
+      cursor: pointer;
+    }
+    .wechart,.wechart1{
+      position: absolute;
+      bottom:30px;
+      laft:50%;
+      width: 200px;
+      heightx:200px;
+      display: none;
+    }
+    .showe{
+      display: block;
+    }
+    .mainaim>img.icon{
+      width: 26px;
+      height: 26px;
+    }
+    .warntips{
+      position: absolute;top:-20px;left:20%;color: red
+    }
+    @media screen and (max-height: 700px) { /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+      .heartPic {
+        margin-top:0
+      }
+      .navs{
+        /*display: none;*/
+        margin-top:-20px;
+      }
+      .navs>li{
+        padding: 2px 5px;
+      }
+      .mainaim{
+        font-size: 18px;
+        margin-top:5px
+      }
+      .mainaim>img.icon{
+        width: 18px;
+        height: 18px;
+      }
+    }
+    @media screen and (max-width: 990px){ /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+      .heartPic {
+        margin-top:20%
+      }
+      .navs{
+        /*display: none;*/
+        margin-top:20px;
+      }
+      .navs>li{
+        font-size: 2rem;
+      }
+      .mainaim{
+        font-size: 2rem;
+        margin-top:3rem;
+      }
+      .mainaim>img.icon{
+        width: 2rem;
+        height:2rem;
+        margin-left: 1rem;
+      }
+      .showe{
+        display: none;
+      }
+      .wechart1{
+        display: block;
+        top:50px;
+        laft:50%;
+        width: 20rem;
+        height: 20rem;
+      }
+      .navs{
+        border-bottom: 0.1rem solid yellow;
+      }
+      .warntips{
+        top:-2rem;
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
@@ -317,15 +401,19 @@
         <li></li>
       </ul>
     </div>
-    <ul class="navs">
+    <ul class="navs" style="position: relative">
       <li title="定制模块开发微聊">签&nbsp;&nbsp;到</li>
       <li title="定制模块开发微聊">留&nbsp;&nbsp;言</li>
       <li title="定制模块开发微聊">行&nbsp;&nbsp;程</li>
       <li title="定制模块开发微聊">公&nbsp;&nbsp;益</li>
       <li title="定制模块开发微聊">动&nbsp;&nbsp;态</li>
+      <span class="warntips">定制模块开发微聊</span>
     </ul>
-    <h1 class="mainaim">此域名出售&爱豆网站定制开发
-      <img src="img/wechat.png" style="height:30px;width: 30px;margin-left: 5px">
+    <h1 class="mainaim">
+      <img src="img/Wechatme.jpeg" class="wechart">
+      此域名出售&爱豆网站定制开发
+      <img src="img/wechat.png" class="icon">
+      <img src="img/Wechatme.jpeg" class="wechart1">
     </h1>
   </div>
   <script src='js/base.js'></script>
@@ -345,8 +433,18 @@
         $(this).find("div").stop(true, true).animate({ "width": "100px", "height": "100px" });
         $(this).find(".pTxt").stop(true, true).animate({ "width": "0px", "height": "0px" });
       });
-      $(".navs li").hover(function () {
-
+      $(".mainaim").mousemove(function () {
+        $('.wechart').addClass('showe')
+      })
+      $(".mainaim").mouseleave(function () {
+        $('.wechart').removeClass('showe')
+      })
+      $('.warntips').hide()
+      $(".navs>li").mousemove(function () {
+        $('.warntips').show()
+      })
+      $(".navs>li").mouseleave(function () {
+        $('.warntips').hide()
       })
     })
   </script>
